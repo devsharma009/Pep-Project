@@ -3,8 +3,9 @@ package com.example.controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.example.User;
-import com.example.UserRepository;
+
+import com.example.repository.*;
+import com.example.model.User;
 import com.example.service.JwtService;
 import org.springframework.http.HttpStatus;
 
@@ -35,8 +36,10 @@ public class AuthController {
         }
         String token = jwtService.generateToken(user);
         return ResponseEntity.ok(Map.of(
+            
             "token", token,
             "role", user.getRole().name()
         ));
+
     }
 } 
